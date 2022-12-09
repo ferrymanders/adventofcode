@@ -105,15 +105,14 @@ func main() {
                     tSpot := fmt.Sprintf("%g_%g", tLoc["x"], tLoc["y"])
                     tSpots[tSpot] = 1
                 }
-                fmt.Println(line)
-                if ( checkAdjacent(hLoc, t1Loc) == false )  { t1Loc = moveT(hLoc, t1Loc); fmt.Println(hLoc, t1Loc) }
-                if ( checkAdjacent(t1Loc, t2Loc) == false ) { t2Loc = moveT(t1Loc, t2Loc); fmt.Println(t1Loc, t2Loc) }
-                if ( checkAdjacent(t2Loc, t3Loc) == false ) { t3Loc = moveT(t2Loc, t3Loc); fmt.Println(t2Loc, t3Loc) }
-                if ( checkAdjacent(t3Loc, t4Loc) == false ) { t4Loc = moveT(t3Loc, t4Loc); fmt.Println(t3Loc, t4Loc) }
-                if ( checkAdjacent(t4Loc, t5Loc) == false ) { t5Loc = moveT(t4Loc, t5Loc); fmt.Println(t4Loc, t5Loc) }
-                if ( checkAdjacent(t5Loc, t6Loc) == false ) { t6Loc = moveT(t5Loc, t6Loc); fmt.Println(t5Loc, t6Loc) }
-                if ( checkAdjacent(t6Loc, t7Loc) == false ) { t7Loc = moveT(t6Loc, t7Loc); fmt.Println(t6Loc, t7Loc) }
-                if ( checkAdjacent(t7Loc, t8Loc) == false ) { t8Loc = moveT(t7Loc, t8Loc); fmt.Println(t7Loc, t8Loc) }
+                if ( checkAdjacent(hLoc, t1Loc) == false )  { t1Loc = moveT(hLoc, t1Loc); }
+                if ( checkAdjacent(t1Loc, t2Loc) == false ) { t2Loc = moveT(t1Loc, t2Loc); }
+                if ( checkAdjacent(t2Loc, t3Loc) == false ) { t3Loc = moveT(t2Loc, t3Loc); }
+                if ( checkAdjacent(t3Loc, t4Loc) == false ) { t4Loc = moveT(t3Loc, t4Loc); }
+                if ( checkAdjacent(t4Loc, t5Loc) == false ) { t5Loc = moveT(t4Loc, t5Loc); }
+                if ( checkAdjacent(t5Loc, t6Loc) == false ) { t6Loc = moveT(t5Loc, t6Loc); }
+                if ( checkAdjacent(t6Loc, t7Loc) == false ) { t7Loc = moveT(t6Loc, t7Loc); }
+                if ( checkAdjacent(t7Loc, t8Loc) == false ) { t8Loc = moveT(t7Loc, t8Loc); }
                 if ( checkAdjacent(t8Loc, t9Loc) == false ) { 
                     t9Loc = moveT(t8Loc, t9Loc)
                     tSpot := fmt.Sprintf("%g_%g", t9Loc["x"], t9Loc["y"])
