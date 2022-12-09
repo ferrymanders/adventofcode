@@ -9,10 +9,10 @@ import (
     "strconv"
 )
 
-func checkAdjacent(hx, hy, tx, ty float64) bool {
+func checkAdjacent(hLoc, tLoc map[string]float64) bool {
     adjacent := false
-    deltaX := math.Abs(hx - tx)
-    deltaY := math.Abs(hy - ty)
+    deltaX := math.Abs(hLoc["x"] - tLoc["x"])
+    deltaY := math.Abs(hLoc["y"] - tLoc["y"])
     if ( deltaX <= 1 ) && ( deltaY <= 1 ){ adjacent = true }
     return adjacent
 }
@@ -36,7 +36,6 @@ func moveT(hLoc, tLoc map[string]float64) map[string]float64 {
     if ( deltaX == -1 && deltaY == -2 ){ tLoc["x"]--; tLoc["y"]-- }
     if ( deltaX ==  1 && deltaY == -2 ){ tLoc["x"]++; tLoc["y"]-- }
     
-    fmt.Println(deltaX, deltaY, tLoc)
     return tLoc
 }
 
@@ -84,8 +83,7 @@ func main() {
                         hLoc["x"]++
                 }
                 // check if T is adjacent to H
-                if ( checkAdjacent(hLoc["x"], hLoc["y"], tLoc["x"], tLoc["y"]) == false ) {
-                    fmt.Println(hLoc, tLoc)
+                if ( checkAdjacent(hLoc, tLoc) == false ) {
                     tLoc = moveT(hLoc, tLoc)
                     tSpot := fmt.Sprintf("%g_%g", tLoc["x"], tLoc["y"])
                     tSpots[tSpot] = 1
@@ -94,7 +92,7 @@ func main() {
             }
         }
     }
-    fmt.Println(tSpots)
+
     part1 = len(tSpots)
 
     fmt.Println("Part1:", part1)
