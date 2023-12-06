@@ -1,7 +1,7 @@
 #!/bin/bash
 
 inputFile="input"
-debug="true"
+debug="false"
 
 highestMapNumber=$(cat $inputFile | grep -Eo '[0-9]+' | sort -h | tail -1)
 
@@ -62,7 +62,12 @@ do
 
     seedNr=$(echo $seedInfo | awk -F ';' '{print $1}')
     seedLoc=$(echo $seedInfo | awk -F ';' '{print $8}')
-    [ $seedLoc -lt $part1Loc ] && part1Loc=$seedLoc && part1Seed=$seedNr && echo "#closer seed found : $seedNr - $seedLoc"
+    if [ $seedLoc -lt $part1Loc ]
+    then
+        part1Loc=$seedLoc
+        part1Seed=$seedNr
+        [ "$debug" == "true" ] && echo "#closer seed found : $seedNr - $seedLoc"
+    fi
     [ "$debug" == "true" ] && echo $seedInfo
 done
 
