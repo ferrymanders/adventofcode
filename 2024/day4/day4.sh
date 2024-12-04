@@ -16,7 +16,6 @@ function findNext() {
 
     [ -z $FOLLOW ] && FOLLOW="TOPLEFT TOPMID TOPRIGHT LEFT RIGHT BOTTOMLEFT BOTTOMMID BOTTOMRIGHT"
 
-    # Check corners
     for DIRECTION in $FOLLOW
     do
         local CHAR=''
