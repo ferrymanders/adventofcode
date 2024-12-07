@@ -2,5 +2,6 @@
 !*/day*.go
 !*/day*.sh
 
+*/*_input
 */work
 */tmp
