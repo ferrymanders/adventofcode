@@ -31,4 +31,4 @@ do
 done < $INPUT
 
 echo "# Part 1: $COUNT_PART1"
-echo "# Part 1: $COUNT_PART2"
+echo "# Part 2: $COUNT_PART2"
