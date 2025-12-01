@@ -3,31 +3,32 @@
 INPUT=input
 
 POSITION=50
-COUNT=0
+COUNT_PART1=0
+COUNT_PART2=0
 
 while read LINE;
 do
     DIRECTION=$(echo $LINE| grep -Eo '^(L|R)')
     CLICKS=$(echo $LINE| grep -Eo '[0-9]+$')
 
-    while [ $CLICKS -gt 100 ];
-    do
-        CLICKS=$(( CLICKS - 100 ))
-    done
-
     case $DIRECTION in
-        L) POSITION=$(( POSITION - CLICKS ));;
-        R) POSITION=$(( POSITION + CLICKS ));;
+        L) OPERATOR='-';;
+        R) OPERATOR='+';;
     esac
 
-    [ $POSITION -lt 0 ] && POSITION=$(( 100 + POSITION ))
-    [ $POSITION -gt 99 ] && POSITION=$(( 0 + (POSITION-100) ))
+    while [ $CLICKS -gt 0 ];
+    do
+        POSITION=$(( POSITION $OPERATOR 1 ))
+        CLICKS=$(( CLICKS - 1 ))
+        case $POSITION in
+            -1) POSITION=99;;
+            100) POSITION=0;;
+        esac
+        [ $POSITION -eq 0 ] && COUNT_PART2=$(( COUNT_PART2 + 1 ))
+    done
 
-    [ $POSITION -eq 0 ] && COUNT=$(( COUNT + 1 ))
+    [ $POSITION -eq 0 ] && COUNT_PART1=$(( COUNT_PART1 + 1 ))
+done < $INPUT
 
-    echo "# $DIRECTION - $CLICKS - $POSITION"
-
-done < $INPUT 
-#| column -t | grep -E ' 0$' | wc -l
-
-echo -e "\n\n# Part 1 = $COUNT"
+echo "# Part 1: $COUNT_PART1"
+echo "# Part 1: $COUNT_PART2"
