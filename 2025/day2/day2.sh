@@ -8,11 +8,13 @@ PART2=0
 for RANGE in $(cat $INPUT | grep -Eo '[0-9]+\-[0-9]+');
 do
     IFS='-' read START FINISH <<< `echo $RANGE`
+
     for (( NUMBER = $START; NUMBER <= $FINISH; NUMBER++ ));
     do
         STRLEN=${#NUMBER}
         HALV=$(( STRLEN / 2 ))
 
+        # Part1
         FIRST=${NUMBER::$HALV}
         LAST=${NUMBER:$HALV}
         if [ "$FIRST" == "$LAST" ];
@@ -46,9 +48,7 @@ do
                 break # Stops the "for STEP"-loop, we've found a pattern match
             fi
         done
-
     done
-
 done
 
 echo "# Part1: $PART1"
